@@ -17,17 +17,11 @@ const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
 
-// The logic in this function should all be handled in the Todo class.
-
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
   const todoElement = todo.getView();
   todoElement.id = uuidv4();
   return todoElement;
-
-  // If a due date has been set, parsing this it with `new Date` will return a
-  // number. If so, we display a string version of the due date in the todo.
-  //
 };
 
 addTodoButton.addEventListener("click", () => {
@@ -51,6 +45,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
+  newTodoValidator.resetValidation();
   closeModal(addTodoPopup);
 });
 
