@@ -46,11 +46,6 @@ class Todo {
 
     return this._todoElement;
   }
-
-  generateTodo(data) {
-    const todo = new Todo(data, "#todo-template");
-    return todo.getView();
-  }
 }
 
 export default Todo;
