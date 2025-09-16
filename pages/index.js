@@ -6,7 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import TodoCounter from "../components/TodoCounter.js";
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
-todoCounter.updateTotal(true);
+
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoForm = document.forms["add-todo-form"];
 const section = new Section({
@@ -30,6 +30,7 @@ const addTodoPopup = new PopupWithForm({
       handleDelete,
     });
     section.addItem(todo.getView());
+    todoCounter.updateTotal(true);
     newTodoValidator.resetValidation();
   },
 });
@@ -43,7 +44,8 @@ function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
 }
 
-function handleDelete() {
+function handleDelete(completed) {
+  todoCounter.updateCompleted(false);
   todoCounter.updateTotal(false);
 }
 

@@ -4,7 +4,7 @@ export default class TodoCounter {
   constructor(todos, selector) {
     this._element = document.querySelector(selector);
     this._completed = 0;
-    this._total = todos.length - 1;
+    this._total = todos.length;
     this._completed = todos.filter((todo) => todo.completed).length;
     this._updateText();
   }
@@ -17,11 +17,10 @@ export default class TodoCounter {
     // the text content.
     if (increment) {
       this._completed += 1;
-      this._updateText();
     } else {
       this._completed -= 1;
-      this._updateText();
     }
+    this._updateText();
   };
 
   // Call this when a to-do is deleted, or when a to-do is

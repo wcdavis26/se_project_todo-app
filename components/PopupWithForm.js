@@ -15,7 +15,7 @@ export default class PopupWithForm extends Popup {
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
     formValues.date = date;
     const id = uuidv4();
-    return { ...formValues, id };
+    return { ...formValues, id, completed: false };
   }
   setEventListeners() {
     super.setEventListeners();
