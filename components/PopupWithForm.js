@@ -4,18 +4,14 @@ export default class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super({ popupSelector });
     this._handleFormSubmit = handleFormSubmit;
+    this._inputList = this._popupElement.querySelectorAll(".popup__input");
   }
   _getInputValues() {
-    this._inputList = this._popupElement.querySelectorAll(".popup__input");
     const formValues = {};
     this._inputList.forEach((input) => {
       formValues[input.name] = input.value;
     });
-    const date = new Date(formValues.date);
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-    formValues.date = date;
-    const id = uuidv4();
-    return { ...formValues, id, completed: false };
+    return formValues;
   }
   setEventListeners() {
     super.setEventListeners();
